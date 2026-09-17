@@ -1,7 +1,7 @@
 services:
   sqlserver:
     image: mcr.microsoft.com/azure-sql-edge
-    container_name: sqlserverDA2
+    container_name: aaaaaaaaaaaaaa
     environment:
       SA_PASSWORD: "Passw0rd!"
       ACCEPT_EULA: "Y"
