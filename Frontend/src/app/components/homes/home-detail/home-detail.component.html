@@ -1,0 +1,32 @@
+<mat-tab-group class="company-tabs">
+  <mat-tab label="Basic Info">
+    <app-home-summary
+      [home]="home"
+      [membersCount]="members.length"
+      [devicesCount]="devices.length"
+    ></app-home-summary>
+  </mat-tab>
+  <mat-tab label="Members">
+    <app-home-members
+      [members]="members"
+      [homeId]="home.id"
+      (reloadMembers)="reloadMembers()"
+    ></app-home-members>
+  </mat-tab>
+  <mat-tab label="Devices">
+    <app-home-devices [devices]="devices"></app-home-devices>
+  </mat-tab>
+    <mat-tab label="Rooms">
+      <div class="button-container">
+        <button mat-flat-button color="primary" (click)="openCreateRoomDialog()">
+          + Create room
+        </button>
+      </div>
+
+      
+  </mat-tab>
+
+  
+
+
+</mat-tab-group>

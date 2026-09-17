@@ -1,0 +1,45 @@
+mat-toolbar {
+  height: auto;
+  gap: 1.5rem;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: inherit;
+  padding-top: 1.5rem;
+  flex: 1;
+}
+
+:host ::ng-deep .mdc-evolution-chip-set__chips {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+:host ::ng-deep .mat-mdc-chip-remove::after {
+  content: none;
+}
+
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  display: none;
+}
+
+.deviceType-list {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.multi-select__container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: inherit;
+}
+
+.multi-select__container mat-form-field {
+  flex: 1;
+}

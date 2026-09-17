@@ -1,0 +1,13 @@
+{
+    "dispositivos": [
+        {
+            "id": "id",
+            "tipo": "type",
+            "nombre": "name",
+            "modelo": "model",
+            "fotos": [],
+            "person_detection": true,
+            "movement_detection": false
+        }
+    ]
+}

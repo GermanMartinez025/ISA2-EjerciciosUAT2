@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+}
+
+:host > * {
+  flex: 1;
+}
+
+.mat-drawer-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.mat-mdc-list-item:not(.mdc-list-item--activated):hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.mat-mdc-list-item.mdc-list-item--activated {
+  background-color: rgba(0, 79, 79, 0.5);
+  margin-right: 5px;
+}
+.mdc-list-item:focus::before {
+  background-color: transparent;
+}

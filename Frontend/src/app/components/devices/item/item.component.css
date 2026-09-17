@@ -1,0 +1,11 @@
+:host {
+  flex: 0 0 calc(25% - 1.5rem);
+  overflow: hidden;
+}
+.card {
+  height: 100%;
+}
+.secondary-photos {
+  display: flex;
+  gap: 8px;
+}

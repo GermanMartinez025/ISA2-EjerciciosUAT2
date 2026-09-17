@@ -1,0 +1,9 @@
+mat-toolbar {
+  justify-content: space-between;
+  background-color: #004f4f;
+}
+.left-side {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}

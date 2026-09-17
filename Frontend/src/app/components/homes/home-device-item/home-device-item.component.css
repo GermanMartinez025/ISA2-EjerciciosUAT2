@@ -1,0 +1,7 @@
+:host {
+  flex: 0 0 calc(25% - 1rem);
+}
+mat-card {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,24 @@
+:host {
+  flex: 0 0 calc(25% - 1rem);
+}
+mat-card {
+  display: flex;
+  flex-direction: column;
+}
+.card-member-info {
+  flex: 1;
+}
+.right-section {
+  padding: 16px 23px 0 0;
+}
+
+.card-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-member-grants {
+  gap: 8px;
+  display: flex;
+}

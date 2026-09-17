@@ -1,0 +1,11 @@
+:host {
+  flex: 1;
+  overflow-y: hidden;
+}
+mat-tab-group {
+  height: 100%;
+}
+
+mat-tab-group.company-tabs ::ng-deep .mat-mdc-tab-body-wrapper {
+  height: 100%;
+}

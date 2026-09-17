@@ -1,0 +1,16 @@
+<div class="photo__list">
+  <div
+    class="photo__item"
+    *ngFor="let photo of photos; let i = index"
+    (click)="selectPhoto(i)"
+  >
+    <img [src]="photos[i]" [alt]="photo + 1" />
+  </div>
+</div>
+<div class="photo__item">
+  <img
+    [src]="photos[selectedPhoto]"
+    [alt]="'Photo ' + (selectedPhoto + 1)"
+    [ngStyle]="{ height: photos.length * 100 + 'px' }"
+  />
+</div>

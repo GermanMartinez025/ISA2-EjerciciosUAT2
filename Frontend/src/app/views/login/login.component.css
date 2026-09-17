@@ -1,0 +1,6 @@
+:host {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  height: 100svh;
+}

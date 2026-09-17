@@ -1,0 +1,7 @@
+<app-home-member-item
+  *ngFor="let member of members"
+  [member]="member"
+></app-home-member-item>
+<button mat-fab class="btn-add" (click)="addMember()">
+  <mat-icon>add</mat-icon>
+</button>

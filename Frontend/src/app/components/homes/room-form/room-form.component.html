@@ -1,0 +1,63 @@
+<mat-card>
+    <mat-card-title class="title">Create Room</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="form">
+        <mat-grid-list cols="12" rowHeight="100px" gutterSize="24px">
+          <mat-grid-tile
+            *ngFor="let field of fields"
+            [colspan]="field.cols"
+            [rowspan]="field.rows"
+            [ngSwitch]="field.type"
+          >
+            <mat-form-field *ngSwitchCase="'input'">
+              <mat-label>{{ field.label }}</mat-label>
+              <input type="text" matInput [formControlName]="field.key" />
+              <mat-error *ngIf="form.get(field.key)?.hasError('required')">
+                {{ field.key }} is required
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field *ngSwitchCase="'textarea'">
+              <mat-label>{{ field.label }}</mat-label>
+              <textarea
+                matInput
+                [formControlName]="field.key"
+                cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize"
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="5"
+              ></textarea>
+              <mat-error *ngIf="form.get(field.key)?.hasError('required')">
+                {{ field.key }} is required
+              </mat-error>
+            </mat-form-field>
+            <img
+              *ngSwitchCase="'image'"
+              [src]="field?.value()"
+              alt="Device image"
+              class="photo"
+              (click)="field?.action()"
+            />
+           
+            <mat-slide-toggle
+              *ngSwitchCase="'switch'"
+              [formControlName]="field.key"
+            >
+              {{ field.label }}
+            </mat-slide-toggle>
+           
+          </mat-grid-tile>
+        </mat-grid-list>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-flat-button
+        type="button"
+        (click)="submit()"
+        [disabled]="form.invalid"
+      >
+        Create
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  

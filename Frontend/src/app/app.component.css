@@ -1,0 +1,9 @@
+:host {
+  height: 100svh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: block;
+  align-items: start;
+}

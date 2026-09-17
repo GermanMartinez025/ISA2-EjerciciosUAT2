@@ -1,0 +1,13 @@
+:host {
+  height: 100%;
+  display: flex;
+  padding: 16px;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.btn-add {
+  right: 1rem;
+  bottom: 1rem;
+  position: absolute;
+}

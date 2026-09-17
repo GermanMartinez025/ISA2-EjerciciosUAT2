@@ -1,0 +1,23 @@
+:host {
+  flex: 0 0 calc(25% - 12px);
+}
+mat-card {
+  display: flex;
+  flex-direction: column;
+}
+:host > * {
+  color: #ffffff;
+}
+
+.card-user-info {
+  flex: 1;
+}
+.right-section {
+  padding: 16px 23px 0 0;
+}
+
+.card-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

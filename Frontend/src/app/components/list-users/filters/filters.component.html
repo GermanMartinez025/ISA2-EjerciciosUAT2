@@ -1,0 +1,62 @@
+<mat-toolbar style="justify-content: space-between">
+  <div class="filters">
+    <div class="roles-list">
+      <span>Roles: </span>
+      <mat-button-toggle-group
+        appearance="legacy"
+        name="roles"
+        aria-label="Roles"
+        [hideMultipleSelectionIndicator]="true"
+        multiple
+        (change)="selectRoles($event)"
+        [value]="filters.roles"
+      >
+        <mat-button-toggle *ngFor="let role of roles" [value]="role.value">
+          <mat-icon
+            [matTooltip]="role.name"
+            [color]="filters.roles.includes(role.value) ? 'primary' : ''"
+            >{{ role.icon }}</mat-icon
+          >
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <mat-form-field style="width: 600px">
+      <mat-label>Names</mat-label>
+      <mat-chip-grid
+        #chipGrid
+        aria-label="Enter fruits"
+        class="chip-list-names"
+      >
+        <input
+          placeholder="New name..."
+          [matChipInputFor]="chipGrid"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="addOnBlur"
+          (matChipInputTokenEnd)="addName($event)"
+        />
+        @for (fullName of filters.fullName; track fullName) {
+        <mat-chip-row
+          (removed)="removeName(fullName)"
+          [editable]="true"
+          (edited)="editName(fullName, $event)"
+          [aria-description]="'press enter to edit ' + fullName"
+        >
+          {{ fullName }}
+          <button matChipRemove [attr.aria-label]="'remove ' + fullName">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+        }
+      </mat-chip-grid>
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="apply.emit()">
+      Apply
+    </button>
+  </div>
+  <div class="actions">
+    <button mat-flat-button color="primary" (click)="createUser()">
+      <span>Create user</span>
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

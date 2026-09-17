@@ -1,0 +1,42 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title
+        >{{ home.name }}-{{ home.mainStreet }}
+        {{ home.doorNumber }}</mat-card-title
+      >
+      <mat-card-subtitle>{{ home.owner }}</mat-card-subtitle>
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="home-details__container">
+      <div class="home-info__container">
+        <span class="home-info__item">
+          <mat-icon>my_location</mat-icon>
+          Geolocation
+        </span>
+        <div>
+          <span>Latitude - {{ home.latitude }}</span>
+          <span>Longitude - {{ home.longitude }}</span>
+        </div>
+      </div>
+      <div class="home-info__container">
+        <span class="home-info__item">
+          <mat-icon>groups</mat-icon>
+          {{ membersCount ? "Members" : "Max Members" }}
+        </span>
+        <span>
+          @if(membersCount){
+          {{ membersCount }}/ } {{ home.maxMembers }}</span
+        >
+      </div>
+      <div class="home-info__container">
+        <span class="home-info__item">
+          <mat-icon>category</mat-icon>
+          Devices
+        </span>
+        <span class="total-devices__count">{{ devicesCount }}</span>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

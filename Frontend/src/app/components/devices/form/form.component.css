@@ -1,0 +1,66 @@
+.title {
+  text-align: center;
+  padding: 20px 0;
+  color: var(--mat-app-text-color);
+}
+mat-form-field {
+  width: 100%;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.chip-image {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--mat-app-text-color);
+}
+
+/*Image chips*/
+:host ::ng-deep .mdc-evolution-chip-set__chips {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+::host ::ng-deep .mat-mdc-chip-row {
+  height: auto;
+}
+:host ::ng-deep .mat-mdc-chip-remove::after {
+  content: none;
+}
+
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  display: none;
+}
+:host ::ng-deep .mat-mdc-standard-chip {
+  height: auto;
+}
+:host ::ng-deep .mat-mdc-standard-chip .mdc-evolution-chip__graphic {
+  height: auto;
+  width: auto;
+}
+
+:host ::ng-deep .mat-mdc-standard-chip .photo__device {
+  height: 60px;
+  width: 60px;
+  border-radius: 0;
+}

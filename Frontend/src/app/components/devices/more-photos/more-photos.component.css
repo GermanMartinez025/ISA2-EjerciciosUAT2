@@ -1,0 +1,32 @@
+.photo__list {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 60px;
+  overflow: hidden;
+  justify-content: flex-start;
+}
+
+.photo__list img {
+  width: 100%;
+  aspect-ratio: 1;
+  margin-bottom: 8px;
+}
+
+:host {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+  justify-content: center;
+  padding: 1.5rem;
+  height: 100%;
+  align-items: center;
+}
+
+.photo__item {
+  flex: 1;
+}
+
+.photo__item img {
+  width: 100%;
+  object-fit: contain;
+}

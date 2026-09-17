@@ -1,0 +1,101 @@
+<mat-card>
+  <mat-card-title class="title">Create Device</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form">
+      <mat-grid-list cols="12" rowHeight="100px" gutterSize="24px">
+        <mat-grid-tile
+          *ngFor="let field of fieldsToShow()"
+          [colspan]="field.cols"
+          [rowspan]="field.rows"
+          [ngSwitch]="field.type"
+        >
+          <mat-form-field *ngSwitchCase="'input'">
+            <mat-label>{{ field.label }}</mat-label>
+            <input type="text" matInput [formControlName]="field.key" />
+            <mat-error *ngIf="form.get(field.key)?.hasError('required')">
+              {{ field.key }} is required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field *ngSwitchCase="'textarea'">
+            <mat-label>{{ field.label }}</mat-label>
+            <textarea
+              matInput
+              [formControlName]="field.key"
+              cdkTextareaAutosize
+              #autosize="cdkTextareaAutosize"
+              cdkAutosizeMinRows="1"
+              cdkAutosizeMaxRows="5"
+            ></textarea>
+            <mat-error *ngIf="form.get(field.key)?.hasError('required')">
+              {{ field.key }} is required
+            </mat-error>
+          </mat-form-field>
+          <img
+            *ngSwitchCase="'image'"
+            [src]="field?.value()"
+            alt="Device image"
+            class="photo"
+            (click)="field?.action()"
+          />
+          <div *ngSwitchCase="'buttonGroup'" class="button-group">
+            <mat-label>{{ field.label }}</mat-label>
+            <mat-button-toggle-group [formControlName]="field.key">
+              <mat-button-toggle
+                *ngFor="let option of field.items"
+                [value]="option.value"
+                [matTooltip]="option.label"
+              >
+                <mat-icon>{{ option.icon }}</mat-icon>
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+          <mat-slide-toggle
+            *ngSwitchCase="'switch'"
+            [formControlName]="field.key"
+          >
+            {{ field.label }}
+          </mat-slide-toggle>
+          <mat-form-field *ngSwitchCase="'chips'">
+            <mat-label>{{ field.label }}</mat-label>
+            <mat-chip-grid #chipList>
+              <input
+                placeholder="Add new"
+                [matChipInputFor]="chipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                [matChipInputAddOnBlur]="true"
+                (matChipInputTokenEnd)="addItem($event, field.key)"
+              />
+              <mat-chip-row
+                *ngFor="let chip of form.get(field.key)?.value || []"
+                (removed)="removeItem(chip, field.key)"
+                [editable]="true"
+                (edited)="editItem(chip, $event, field.key)"
+                [aria-description]="'press enter to edit ' + chip"
+              >
+                <img
+                  *ngIf="chip.startsWith('http')"
+                  [src]="chip"
+                  alt="Chip image"
+                  matChipAvatar
+                  class="photo__device"
+                />
+                <span *ngIf="!chip.startsWith('http')">{{ chip }}</span>
+                <mat-icon matChipRemove>cancel</mat-icon>
+              </mat-chip-row>
+            </mat-chip-grid>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      mat-flat-button
+      type="button"
+      (click)="submit()"
+      [disabled]="form.invalid"
+    >
+      Create
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,27 @@
+<mat-sidenav-container autosize>
+  <mat-sidenav
+    [opened]="opened"
+    [mode]="mode"
+    (openedChange)="openedChange($event)"
+  >
+    <mat-list>
+      @for (section of sections; track section) {
+      <div mat-subheader>{{ section.title }}</div>
+      @for (item of section.items; track item) {
+      <a
+        mat-list-item
+        href="{{ item.path }}"
+        [activated]="item.path === currentPath"
+      >
+        <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+        <div matListItemTitle>{{ item.name }}</div>
+      </a>
+      } }
+      <div mat-subheader>Folders</div>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-toolbar (toggleSidebar)="toggleSidebar()"></app-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

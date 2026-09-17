@@ -1,0 +1,23 @@
+<app-filters
+  [filters]="filters"
+  [showCompanyFilter]="showCompany"
+  [showCreateButton]="showCreateButton"
+  (apply)="applyFilters()"
+  (create)="createDevice()"
+>
+</app-filters>
+<div class="list">
+  <app-item
+    *ngFor="let device of devices"
+    [device]="device"
+    [showCompany]="showCompany"
+  ></app-item>
+</div>
+<mat-paginator
+  [length]="totalDevices"
+  [pageSize]="pageOptions.size"
+  [pageSizeOptions]="[8, 16, 24, 48]"
+  aria-label="Select page"
+  (page)="pageChange($event)"
+>
+</mat-paginator>

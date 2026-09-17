@@ -1,0 +1,19 @@
+<mat-dialog-content>
+  <h1 mat-dialog-title>Profile Image</h1>
+  <form [formGroup]="form">
+    <div mat-dialog-content>
+      <mat-form-field>
+        <mat-label>URL</mat-label>
+        <input type="text" matInput required formControlName="url" />
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close] (click)="closeDialog()">
+        Cancel
+      </button>
+      <button [disabled]="form.invalid" mat-button (click)="saveImage()">
+        Save
+      </button>
+    </div>
+  </form>
+</mat-dialog-content>

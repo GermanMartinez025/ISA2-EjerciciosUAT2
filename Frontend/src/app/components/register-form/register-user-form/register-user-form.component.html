@@ -1,0 +1,99 @@
+<mat-card>
+  <mat-card-title class="title">{{ title }}</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form" class="row">
+      <mat-grid-list cols="4" rowHeight="100px" gutterSize="24px">
+        <mat-grid-tile [colspan]="2" [rowspan]="2">
+          <img
+            [src]="image$ | async"
+            alt="User"
+            class="avatar"
+            (click)="openDialogImage()"
+          />
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2">
+          <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input type="text" matInput formControlName="firstName" />
+            <mat-error *ngIf="form.get('firstName')?.hasError('required')">
+              First Name is required
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2">
+          <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input type="text" matInput formControlName="lastName" />
+            <mat-error *ngIf="form.get('lastName')?.hasError('required')">
+              Last Name is required
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="4">
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="text" matInput formControlName="email" />
+            <mat-error *ngIf="form.get('email')?.hasError('required')">
+              Email is required
+            </mat-error>
+            <mat-error *ngIf="form.get('email')?.hasError('email')">
+              Email is invalid
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="4">
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input
+              [type]="hidden ? 'password' : 'text'"
+              matInput
+              formControlName="password"
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="toggleHide()"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hidden"
+            >
+              <mat-icon>{{
+                hidden ? "visibility_off" : "visibility"
+              }}</mat-icon>
+            </button>
+            <mat-error *ngIf="form.get('password')?.hasError('required')">
+              Password is required
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="4" *ngIf="roles && roles.length > 0">
+          <mat-form-field>
+            <mat-label>Roles</mat-label>
+            <mat-select matNativeControl formControlName="role">
+              <mat-select-trigger>
+                <mat-icon>{{ getRole(form.value.role)?.icon }}</mat-icon>
+                <span>{{ getRole(form.value.role)?.name }}</span>
+              </mat-select-trigger>
+              <mat-option *ngFor="let role of roles" [value]="role.value">
+                <mat-icon>{{ role.icon }}</mat-icon>
+                {{ role.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      mat-flat-button
+      type="button"
+      (click)="submit()"
+      [disabled]="form.invalid"
+    >
+      {{ currentRoute === "register" ? "Register" : "Create" }}
+    </button>
+    <a mat-button routerLink="/login" *ngIf="currentRoute === 'register'">
+      Already have an account?
+    </a>
+  </mat-card-actions>
+</mat-card>

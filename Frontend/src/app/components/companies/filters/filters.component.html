@@ -1,0 +1,34 @@
+<mat-toolbar style="justify-content: space-between">
+  <div class="multi-select__container">
+    <mat-form-field *ngFor="let filterField of filtersMultiSelectToShow()">
+      <mat-label>{{ filterField.name }}</mat-label>
+      <mat-chip-grid
+        #chipGrid
+        aria-label="Enter device names"
+        class="chip-list-filter"
+      >
+        <input
+          [placeholder]="filterField.placeholder"
+          [matChipInputFor]="chipGrid"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="addOnBlur"
+          (matChipInputTokenEnd)="addItem($event, filterField.value)"
+        />
+        @for (item of filters[filterField.value]; track item) {
+        <mat-chip-row
+          (removed)="removeItem(item, filterField.value)"
+          [editable]="true"
+          (edited)="editItem(item, $event, filterField.value)"
+          [aria-description]="'press enter to edit ' + item"
+        >
+          {{ item }}
+          <button matChipRemove [attr.aria-label]="'remove ' + item">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+        }
+      </mat-chip-grid>
+    </mat-form-field>
+  </div>
+  <button mat-flat-button color="primary" (click)="apply.emit()">Apply</button>
+</mat-toolbar>

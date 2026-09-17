@@ -1,0 +1,30 @@
+<mat-card>
+  <div class="card-section">
+    <div class="card-member-info">
+      <mat-card-header>
+        <div mat-card-avatar>
+          <img
+            style="width: 100%"
+            mat-card-image
+            [src]="member.profilePhoto"
+            [alt]="member.firstName + ' ' + member.lastName"
+          />
+        </div>
+        <mat-card-title
+          >{{ member.firstName }} {{ member.lastName }}</mat-card-title
+        >
+        <mat-card-subtitle>{{ member.email }}</mat-card-subtitle>
+      </mat-card-header>
+    </div>
+    <div class="right-section">
+      <div class="card-member-grants">
+        <mat-icon
+          *ngFor="let grant of grants()"
+          [matTooltip]="grant.description"
+          [color]="grant.color"
+          >{{ grant.icon }}</mat-icon
+        >
+      </div>
+    </div>
+  </div>
+</mat-card>

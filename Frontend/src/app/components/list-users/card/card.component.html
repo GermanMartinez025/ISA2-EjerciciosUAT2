@@ -1,0 +1,38 @@
+<mat-card>
+  <div class="card-section">
+    <div class="card-user-info">
+      <mat-card-header>
+        <div mat-card-avatar>
+          <img
+            style="width: 100%"
+            mat-card-image
+            [src]="user.profilePhoto"
+            [alt]="user.fullName"
+          />
+        </div>
+        <mat-card-title>{{ user.fullName }}</mat-card-title>
+        <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+      </mat-card-header>
+    </div>
+    <div class="right-section">
+      <div class="card-user-roles">
+        <mat-icon
+          *ngFor="let role of user.getRoles()"
+          [matTooltip]="role.name"
+          >{{ role.icon }}</mat-icon
+        >
+      </div>
+    </div>
+  </div>
+  <div class="card-section" style="padding: 16px">
+    <div>
+      <span> Created at: </span>
+      <span>
+        {{ user.creationDate | date : "medium" }}
+      </span>
+    </div>
+    <button mat-icon-button [matTooltip]="'Delete'" (click)="deleteUser()">
+      <mat-icon color="error-color">delete</mat-icon>
+    </button>
+  </div>
+</mat-card>

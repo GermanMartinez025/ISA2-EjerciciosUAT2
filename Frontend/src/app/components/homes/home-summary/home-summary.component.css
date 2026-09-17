@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+mat-card {
+  width: 30%;
+  padding: 2rem;
+  gap: 2rem;
+}
+.home-details__container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding-top: 16px;
+  border-top: 1px solid;
+}
+
+.home-info__item {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+}
+.home-info__container {
+  display: flex;
+  flex-direction: column;
+}

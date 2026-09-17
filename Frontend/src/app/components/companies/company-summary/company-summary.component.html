@@ -1,0 +1,30 @@
+<mat-card class="card-summary">
+  <mat-card-header>
+    <mat-card-title-group>
+      <img mat-card-lg-image [src]="company.companyLogoType" />
+
+      <mat-card-title>{{ company.companyName }}</mat-card-title>
+      <mat-card-subtitle>{{ company.ownerFullName }}</mat-card-subtitle>
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="company-info">
+      <span class="company-info__icon">
+        <mat-icon>email</mat-icon>
+        Email
+      </span>
+      <span>{{ company.ownerEmail }}</span>
+    </div>
+    <div class="company-info">
+      <span class="company-info__icon">
+        <mat-icon>credit_card</mat-icon>
+        RUT
+      </span>
+      <span>{{ company.companyRut }}</span>
+    </div>
+    <div class="total-devices">
+      <span class="total-devices__title">Devices</span>
+      <span class="total-devices__count">{{ company.totalDevices }}</span>
+    </div>
+  </mat-card-content>
+</mat-card>

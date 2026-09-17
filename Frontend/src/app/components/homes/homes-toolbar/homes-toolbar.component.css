@@ -1,0 +1,7 @@
+:host {
+  padding: 16px;
+  padding-bottom: 0;
+}
+mat-toolbar {
+  height: auto;
+}

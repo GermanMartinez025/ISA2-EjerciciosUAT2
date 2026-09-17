@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+  background-color: var(--mat-app-background-color);
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --mat-var-error-color: #93000a;
+}
+
+.mat-error-color {
+  color: var(--mat-var-error-color);
+}

@@ -1,0 +1,14 @@
+<!-- <a href="https://www.youtube.com/watch?v=BBJa32lCaaY" target="_blank"
+  >Demo Postman Primer obligatorio</a
+> -->
+<p class="home--title">Casas, Casas y más Casas</p>
+<div class="supported-devices">
+  <span class="home--subtitle">Dispositivos soportados</span>
+  <div class="supported-devices--list">
+    <div *ngFor="let item of supportedDevices" [matTooltip]="item">
+      <mat-icon>
+        {{ getDeviceIcon(item) }}
+      </mat-icon>
+    </div>
+  </div>
+</div>

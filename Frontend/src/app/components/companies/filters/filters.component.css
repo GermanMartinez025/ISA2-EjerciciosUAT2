@@ -1,0 +1,31 @@
+mat-toolbar {
+  height: auto;
+  gap: 1.5rem;
+  padding-top: 1.5rem;
+}
+
+:host ::ng-deep .mdc-evolution-chip-set__chips {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+:host ::ng-deep .mat-mdc-chip-remove::after {
+  content: none;
+}
+
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  display: none;
+}
+
+.multi-select__container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: inherit;
+}
+
+.multi-select__container mat-form-field {
+  flex: 1;
+}
